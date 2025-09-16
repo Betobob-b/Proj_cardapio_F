@@ -1,65 +1,119 @@
 .modal-overlay {
     position: fixed;
     inset: 0;
-    background-color: rgba(0,0,0,0.4);
-    overflow: hidden;
-    height: 100vh;
-    width: 100vw;
-
+    background-color: rgba(0, 0, 0, 0.6);
     display: flex;
     align-items: center;
     justify-content: center;
-
-    z-index: 999;
+    z-index: 1000;
+    padding: 20px;
 }
 
-.modal-overlay .modal-body {
-    background-color: white;
-    padding: 24px;
-    height: 60%;
-    width: 60%;
-    border-radius: 24px;
-
+.modal-body {
+    background-color: var(--color-background-light);
+    color: var(--color-text-light);
+    padding: 32px;
+    border-radius: 16px;
+    width: 100%;
+    max-width: 500px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
     display: flex;
-    align-items: flex-start;
     flex-direction: column;
-    justify-content: space-between;
+    gap: 24px;
+    position: relative;
 }
 
-.modal-overlay .modal-body h2 {
-    font-size: 32px;
+.close-btn {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: transparent;
+    border: none;
+    font-size: 12px;
+    cursor: pointer;
+    color: var(--color-text-light);
 }
 
-.modal-overlay .modal-body .input-container {
-    width: calc(100% - 24px);
+@media (prefers-color-scheme: dark) {
+    .close-btn {
+        color: var(--color-text-dark);
+    }
 }
 
-.modal-overlay .modal-body input {
-    padding: 12px;
-    border: 2px solid #c6c5c5c5;
-    color: rgba(0,0,0,0.9);
-    font-size: 18px;
-    line-height: 24px;
-    border-radius: 12px;
+.modal-body h2 {
+    font-size: 2em;
+    margin: 0;
+}
+
+.input-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
     width: 100%;
-
-    margin-bottom: 12px;
 }
 
-.modal-overlay .modal-body label {
-    color: #242424;
+.input-container label {
     font-weight: 600;
-    margin-bottom: 8px;
-    font-size: 18px;
+    font-size: 1.1em;
 }
 
-.modal-overlay .modal-body .btn-secondary {
-    position: initial;
+.input-container input {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1em;
     width: 100%;
-    margin-top: 32px;
+    box-sizing: border-box;
+    background-color: var(--color-background-light);
+    color: var(--color-text-light);
 }
 
-.modal-overlay .modal-body .btn-secondary:hover {
-    background-color: #3a44f8;
-    transform: scale(1);
+.btn-secondary {
+    width: 50%;
+    margin: 0 auto;
+    padding: 14px;
+    font-size: 1.1em;
+    background-color: var(--color-link-light);
+    color: var(--color-background-light);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    display: block;
+}
+
+.btn-secondary:hover {
+    background-color: var(--color-link-hover-light);
+}
+
+@media (prefers-color-scheme: dark) {
+    .modal-body {
+        background-color: var(--color-background-dark);
+        color: var(--color-text-dark);
+    }
+
+    .input-container input {
+        background-color: #333;
+        border-color: #555;
+        color: var(--color-text-dark);
+    }
+
+    .btn-secondary {
+        background-color: var(--color-link-dark);
+        color: var(--color-text-dark);
+    }
+
+    .btn-secondary:hover {
+        background-color: var(--color-link-hover-dark);
+    }
+}
+
+@media (max-width: 600px) {
+    .modal-body {
+        padding: 24px;
+    }
+
+    .modal-body h2 {
+        font-size: 1.8em;
+    }
 }
